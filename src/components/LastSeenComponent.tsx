@@ -1,9 +1,10 @@
 import LastSeenPropsInterface from "../LastSeenInterface";
-import React, { useEffect } from "react";
 
 const LastSeenComponent = ({ lastSeen }: LastSeenPropsInterface) => {
-  let lastSeenSeconds: number = Math.floor((Date.now() - lastSeen) / 1000);
-  let lastSeenMinutes: number = Math.floor((Date.now() - lastSeen) / 1000 / 60);
+  const lastSeenSeconds: number = Math.floor((Date.now() - lastSeen) / 1000);
+  const lastSeenMinutes: number = Math.floor(
+    (Date.now() - lastSeen) / 1000 / 60
+  );
 
   const lessThanMinute = (lastSeen: number) => {
     return lastSeen < 60 ? true : false;
