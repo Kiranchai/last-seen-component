@@ -7,7 +7,11 @@ const App: React.FC = () => {
   const dateObject: Date = new Date();
   const formattedDate: string = `${dateObject.getFullYear()}-${
     dateObject.getMonth() + 1
-  }-${dateObject.getDate()}T${dateObject.getHours()}:${
+  }-${dateObject.getDate()}T${
+    dateObject.getHours() < 10
+      ? `0${dateObject.getHours}`
+      : `${dateObject.getHours}`
+  }:${
     dateObject.getMinutes() < 10
       ? `0${dateObject.getMinutes()}`
       : `${dateObject.getMinutes()}`
@@ -38,7 +42,7 @@ const App: React.FC = () => {
           className="date-input"
           type={"datetime-local"}
           onChange={handleChange}
-          value={inputDate}
+          defaultValue={inputDate}
         ></input>
         <LastSeenComponent lastSeen={lastSeen} />
       </div>
