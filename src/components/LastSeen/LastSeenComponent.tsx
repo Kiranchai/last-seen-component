@@ -1,25 +1,17 @@
-import LastSeenPropsInterface from "../LastSeenInterface";
+import LastSeenPropsInterface from "./LastSeenInterface";
 
 const LastSeenComponent = ({ lastSeen }: LastSeenPropsInterface) => {
   const lastSeenSeconds: number = Math.floor((Date.now() - lastSeen) / 1000);
-  const lastSeenMinutes: number = Math.floor(
-    (Date.now() - lastSeen) / 1000 / 60
-  );
+  const lastSeenMinutes: number = Math.floor(lastSeenSeconds / 60);
 
-  const lessThanMinute = (lastSeen: number) => {
+  const lessThanMinute = (lastSeen: number): boolean => {
     return lastSeen < 60 ? true : false;
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <span>{lastSeenSeconds}</span>
+    <div>
       <span>
-        {lessThanMinute(lastSeen)
+        {lessThanMinute(lastSeenSeconds)
           ? `${lastSeenSeconds} seconds ago`
           : `${lastSeenMinutes} ${
               lastSeenMinutes === 1 ? "minute" : "minutes"
