@@ -9,8 +9,8 @@ const App: React.FC = () => {
     dateObject.getMonth() + 1
   }-${dateObject.getDate()}T${
     dateObject.getHours() < 10
-      ? `0${dateObject.getHours}`
-      : `${dateObject.getHours}`
+      ? `0${dateObject.getHours()}`
+      : `${dateObject.getHours()}`
   }:${
     dateObject.getMinutes() < 10
       ? `0${dateObject.getMinutes()}`
@@ -42,7 +42,7 @@ const App: React.FC = () => {
           className="date-input"
           type={"datetime-local"}
           onChange={handleChange}
-          defaultValue={inputDate}
+          value={inputDate}
         ></input>
         <LastSeenComponent lastSeen={lastSeen} />
       </div>
